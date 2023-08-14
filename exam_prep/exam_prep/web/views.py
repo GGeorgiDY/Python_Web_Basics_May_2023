@@ -13,8 +13,8 @@ def get_profile():
 def index(request):
     # тук, проверяваме дали има профил и ако няма да покаже add profile в index страницата
     profile = get_profile()
-    if profile is None:
-        return add_profile(request)
+    if profile is None:   # Ако нямаме профил
+        return add_profile(request)   # искаме да редиректнеш към 'add profile' view-то
 
     context = {
         'albums': Album.objects.all(),  # върни ми всичките албуми които имам
@@ -109,7 +109,7 @@ def add_profile(request):
     # Ако е GET или формата не е валидна
     context = {
         'form': form,
-            'hide_nav_links': True,
+        'hide_nav_links': True,
     }
 
     return render(request, 'core/home-no-profile.html', context)
