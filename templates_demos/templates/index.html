@@ -1,0 +1,80 @@
+{% extends 'base/base.html' %}
+{% load filters %} {#  името на файла #}
+{% load tags %}
+
+{% block page_title %}Homepage{% endblock %}
+
+{% block page_content %}
+    <h2>
+        Original: {{ title }}: {{ value }}
+    </h2>
+
+    <h2>
+        Upped: {{ title|upper }}: {{ value }}
+    </h2>
+
+    <h2>
+        Capped first: {{ title|capfirst }}: {{ value }}
+    </h2>
+
+    <h2>
+        Lowered than Capped first: {{ title|lower|capfirst }}: {{ value }}
+    </h2>
+
+    <h2>
+        Truncated 10: {{ title|truncatechars:10 }}: {{ value }}
+    </h2>
+
+    <h2>
+        {{ now }}: Every computer will see it differently based on it's settings
+    </h2>
+
+    <h2>
+        {{ now|date:'Y/M/D' }}: concrete way of seeing date
+    </h2>
+
+    {{ 2|add:3|add:4 }} <br>
+
+    {{ info.address }} <br>
+    {{ student.all }} <br>
+    {{ student_info }} <br>
+
+    {#    tags example#}
+    <div>
+        {% if students %}
+        {{ students|join:', ' }}
+        {% else %}
+            No students
+        {% endif %}
+    </div>
+
+    <h3>Pure `for`</h3>
+    <ul>
+        {% for student in students %}
+            <li>{{  student }}</li>
+        {% empty %}
+            <li>No students</li>
+        {% endfor %}
+    </ul>
+
+    <h3>`for` with `ifchanged`</h3>
+    <ul>
+        {% for student in students %}
+            {% ifchanged student %}
+                <li>{{  student }}</li>
+            {% endifchanged %}
+        {% endfor %}
+    </ul>
+
+    <div>Custom filters</div>
+    <div> Odd numbers: {{ values|odd }}</div> {# odd е името на филтъра, който сме създали #}
+    <div> Original numbers: {{ values }}</div>
+    <div>{{ now|app_style }}</div>
+    <br>
+    <div>Custom tags - simple tag</div>
+    <div>{% student_info student=student %}</div>
+    <div>{% sample_tag %}</div>
+    <div>{% sample_tag 17 'Doncho' True %}</div>
+    <br>
+    <div>Custom tags - inclusion tag</div>
+{% endblock %}
