@@ -15,7 +15,7 @@
                     <div id="details-description">
                         <!-- fruit description -->
                         <p>
-                            {{ fruit.description }}
+                            {{ fruit.description|truncatechars:50 }}
                         </p>
                         <!-- fruit nutrition -->
                         <p id="nutrition">Nutrition</p>
