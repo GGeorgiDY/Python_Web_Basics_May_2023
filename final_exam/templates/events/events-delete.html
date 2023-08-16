@@ -1,0 +1,24 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- The Main Content for the Delete Event section -->
+    <section id="delete-page">
+        <div class="form">
+            <!-- Title of the Page -->
+            <h2>Delete Event</h2>
+
+            <!-- Delete Event Form -->
+            <form method="post" action="{% url 'delete event' pk=event.pk %}">
+                {{ form }}
+                <!-- Delete Button -->
+                <input class="btn" type="submit" value="Delete">
+                {% csrf_token %}
+
+            </form>
+            <!-- End Delete Event Form -->
+        </div>
+    </section>
+    <!-- End Delete Event section -->
+
+{% endblock %}

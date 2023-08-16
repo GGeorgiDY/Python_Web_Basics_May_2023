@@ -1,0 +1,24 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- The Main Content for the Delete Profile section -->
+    <section id="delete-page">
+        <div class="form" id="delete-profile">
+
+            <!-- Delete Profile Form -->
+            <form id='delete' method="post" action="{% url 'delete profile' %}">
+                {{ form }}
+                <h2>Are you sure you want to delete your profile?</h2>
+
+                <!-- Confirm Button -->
+                <input class="btn submit" type="submit" value="Confirm">
+                {% csrf_token %}
+
+            </form>
+            <!-- End Delete Profile Form -->
+        </div>
+    </section>
+    <!-- End Delete Profile section -->
+
+{% endblock %}

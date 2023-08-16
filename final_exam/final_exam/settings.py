@@ -85,6 +85,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS = (BASE_DIR / 'staticfiles/',)
+STATICFILES_DIRS = (BASE_DIR / 'staticfiles/',)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DATE_INPUT_FORMATS = ["%d.%m.%Y"]
+DATE_FORMAT = "d.m.Y"
+USE_L10N = False
